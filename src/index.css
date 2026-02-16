@@ -1,0 +1,114 @@
+/* --- POLICES --- */
+@import url("https://fonts.cdnfonts.com/css/montserrat");
+@import url('https://fonts.cdnfonts.com/css/vic');
+
+/* --- DIRECTIVES TAILWIND (Version stable v3) --- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- RESET & BASE --- */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --sdi-blue: #1e3a8a;
+  --sdi-orange: #f94c10;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
+/* --- TYPOGRAPHIE --- */
+.hero--title {
+  font-family: 'VIC', sans-serif;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.montserrat, h2, h3, button, input::placeholder {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+h2, h3 { font-weight: 800; }
+
+button {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- EFFETS D'ARRIÈRE-PLAN --- */
+.background-p {
+  background-color: rgb(252, 252, 252);
+  background-image: radial-gradient(
+    circle,
+    rgb(228, 228, 231) 0.0625rem,
+    transparent 0.0625rem
+  );
+  background-size: 1.25rem 1.25rem;
+}
+
+@media screen and (max-width: 500px) {
+  .background-p { background-image: none; background-color: #ffffff; }
+}
+
+/* --- SECTION THÈME & BUILDING --- */
+.bg-pattern-building {
+  position: relative;
+  background-color: #ffffff !important;
+  overflow: hidden;
+  border-top: 1px solid #f0f0f0;
+}
+
+.bg-pattern-building::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Correction du chemin pour le dossier public */
+  background-image: url('../public/aze.png'); 
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: 0.15; 
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-pattern-building > div {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- BOUTONS & SCROLLBAR --- */
+.btn-sdi {
+  background-color: var(--sdi-orange);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(249, 76, 16, 0.3);
+}
+
+.btn-sdi:hover {
+  transform: translateY(-2px);
+  background-color: var(--sdi-blue);
+}
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.snap-x {
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
