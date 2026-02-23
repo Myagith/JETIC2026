@@ -16,7 +16,6 @@ const EventCard = ({ title, date, image, description }) => (
 );
 
 const LandingView = () => {
-  // Ligne supprimée ici pour corriger l'erreur ESLint (isModalOpen)
 
   const calculateTimeLeft = () => {
     const targetDate = new Date("2026-02-26T00:00:00").getTime();
