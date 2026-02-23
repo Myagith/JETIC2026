@@ -16,7 +16,7 @@ const EventCard = ({ title, date, image, description }) => (
 );
 
 const LandingView = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Ligne supprimée ici pour corriger l'erreur ESLint (isModalOpen)
 
   const calculateTimeLeft = () => {
     const targetDate = new Date("2026-02-26T00:00:00").getTime();
@@ -44,7 +44,7 @@ const LandingView = () => {
   }, []);
 
   const goToExternalHackathon = () => {
-    window.location.href = "";
+    window.location.href = "https://www.hackathon26esatic.com/";
   };
 
   return (
@@ -93,11 +93,21 @@ const LandingView = () => {
         <div className="flex-grow flex justify-center">
           <img src="/SDI.png" alt="Logo SDI" className="h-14 md:h-20 object-contain hover:scale-105 transition-transform cursor-pointer" />
         </div>
-        <div className="hidden sm:block">
-          <button onClick={goToExternalHackathon} className="text-[#1e3a8a] font-bold text-sm hover:text-[#f94c10] transition-all uppercase tracking-widest relative group">
-            Commencer
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f94c10] transition-all group-hover:w-full"></span>
+        
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={goToExternalHackathon} 
+            className="bg-[#f94c10] text-white px-5 py-2 rounded-xl font-black text-xs md:text-sm hover:bg-[#1e3a8a] transition-all transform hover:scale-105 shadow-lg uppercase tracking-widest border-2 border-white"
+          >
+            Jouer
           </button>
+
+          <div className="hidden sm:block">
+            <button onClick={goToExternalHackathon} className="text-[#1e3a8a] font-bold text-sm hover:text-[#f94c10] transition-all uppercase tracking-widest relative group">
+              Commencer
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f94c10] transition-all group-hover:w-full"></span>
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -157,7 +167,7 @@ const LandingView = () => {
             <EventCard title="La Jetic" date="27 fév au 02 mars 2026" image="/jet.jpeg" description="Les Journées de l'Entrepreneuriat et des TIC." />
             <EventCard title="Le Salon de l'Innovation" date="27 fév au 02 mars 2026" image="/Si.JPG.jpeg" description="Une exposition immersive des meilleurs projets." />
             <EventCard title="Le Technovore Hackathon" date="27 fév au 02 mars 2026" image="/ht.JPG.jpeg" description="Un marathon de code intense." />
-            <EventCard title="Conférences" date="27 fév au 02 mars 2026" image="/conf.jpeg" description="Des experts de renom partagent leur vision." />
+            <EventCard title="Conférences" date="27 fév au 02 mars 2026" image="/conf.jpeg" description="Des experts de renown partagent leur vision." />
           </div>
         </div>
       </section>
@@ -182,22 +192,6 @@ const LandingView = () => {
             ))}
           </div>
 
-        {/* --- SECTION PARTENAIRES & SPONSORS --- */}
-      <section className="py-12 reveal">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold text-[#1e3a8a] mb-10">Partenaires & Sponsors</h2>
-          
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            {[1, 2, 3, 4].map((item) => (
-              <div 
-                key={item} 
-                className="w-24 h-24 md:w-40 md:h-32 bg-gray-100 rounded-2xl border-2 border-gray-50 shadow-sm"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
           <div className="flex flex-col items-center gap-12 mb-20">
             <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 mb-10">
               <img src="/Fichier 1.png" alt="ESATIC" className="h-20 md:h-32 object-contain" />
@@ -220,7 +214,7 @@ const LandingView = () => {
             <div className="text-center md:text-left">
               <span className="bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Sécurité</span>
               <h3 className="text-white font-bold text-2xl md:text-4xl mt-4">Plateforme de Signalement</h3>
-              <span>Dénoncer de manière confidentielle toute suspicion de fraude ou de tricherie commise par une équipe durant l'événement.</span>
+              <p className="text-white/80">Dénoncer de manière confidentielle toute suspicion de fraude ou de tricherie commise par une équipe durant l'événement.</p>
             </div>
             <button 
               onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSdEFN0I8rVf699szzwQIqbYRgJuJgvAItR1-hQ3ljmn8zVbyQ/viewform?usp=publish-editor", "_blank")} 
@@ -231,22 +225,6 @@ const LandingView = () => {
           </div>
         </div>
       </section>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 backdrop-blur-xl">
-          <div className="absolute inset-0 bg-black/60" onClick={() => setIsModalOpen(false)}></div>
-          <div className="relative bg-white w-full max-w-lg rounded-[40px] p-8 shadow-2xl animate-[slide-up_0.4s_ease-out]">
-             <h2 className="text-2xl font-black text-gray-900 mb-6">Rapport Confidentiel</h2>
-             <form className="space-y-6">
-                <input type="text" placeholder="Cible" className="w-full px-5 py-4 bg-gray-50 border rounded-2xl outline-none" />
-                <textarea rows="4" placeholder="Détails" className="w-full px-5 py-4 bg-gray-50 border rounded-2xl outline-none"></textarea>
-                <button type="button" onClick={() => setIsModalOpen(false)} className="w-full py-5 bg-[#1e3a8a] text-white font-black rounded-2xl uppercase tracking-widest hover:bg-[#f94c10]">Soumettre</button>
-             </form>
-          </div>
-        </div>
-      )}
-
-    
 
       {/* --- FOOTER --- */}
       <footer className="py-12 border-t border-gray-100 text-center bg-white/80 backdrop-blur-sm reveal">
